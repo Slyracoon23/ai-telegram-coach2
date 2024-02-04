@@ -1,5 +1,6 @@
 import { type Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
+import { kv } from '@vercel/kv'
 
 import { auth } from '@/auth'
 import { getChat } from '@/app/actions'
@@ -38,7 +39,7 @@ export default async function Dashboard({ params }: DashboardProps) {
     <div className="my-6 max-w-screen-xl mx-auto">
       <div className="flex flex-col w-full">
         <h1 className="text-2xl"> {session?.user.name} Dashboard</h1>
-        
+
       </div>
     </div>
   )

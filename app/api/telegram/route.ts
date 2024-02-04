@@ -34,7 +34,6 @@ export const POST = async (request: Request, res: any) => {
         temperature: 0.7,
         stream: false
       })
-
       console.log('openai response', res)
       const chatResponse = res.choices[0].message.content
 
@@ -45,7 +44,6 @@ export const POST = async (request: Request, res: any) => {
     } else if (requestJson.message?.voice) {
       // Handle voice message
       const voiceResponse = `Hi ${requestJson.message.from.first_name}, I received your voice message, but I'm not able to process voice messages yet.`
-
 
       const messages = [
         {
@@ -71,7 +69,6 @@ export const POST = async (request: Request, res: any) => {
 
       console.log('openai response', res)
       const chatResponse = res.choices[0].message.content
-
 
       const ret = await fetch(
         `https://api.telegram.org/bot${NEXT_TELEGRAM_TOKEN}/sendMessage?chat_id=${requestJson.message.chat.id}&text=${chatResponse}&parse_mode=HTML`
