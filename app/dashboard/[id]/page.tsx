@@ -77,10 +77,12 @@ export default async function Dashboard({ params }: DashboardProps) {
             <h3 className="text-xl my-2">Goals:</h3>
             {/* {(goal || []).map((goalObj: any) => { */}
             {/* return ( */}
-            <div className="flex flex-col w-full">
-              <p className="text-md my-2">goal number:{goal.goal_number}</p>
-              <p className="text-md my-2">{goal.goal_description}</p>
-            </div>
+            {goal && (
+              <div className="flex flex-col w-full">
+                <p className="text-md my-2">goal number:{goal.goal_number}</p>
+                <p className="text-md my-2">{goal.goal_description}</p>
+              </div>
+            )}
             {/* ) */}
             {/* })} */}
           </div>
