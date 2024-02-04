@@ -3,19 +3,23 @@ const DEMOCHATID = 'DEMOCHATID'
 export const POST = async (request: Request, res: any) => {
   try {
     const requestJson: any = await request.json() // res now contains body
+    
 
     console.log('telegram route', requestJson)
 
     // const NEXT_TELEGRAM_TOKEN = process.env.NEXT_TELEGRAM_TOKEN;
+    const NEXT_TELEGRAM_TOKEN = '6549200389:AAEwzEV7oEdME0bBokbopN0tlBevN-iMXyk'
 
-    // const response =
-    //   'Welcome to <i>NextJS News Channel</i> <b>' +
-    //   message.from.first_name +
-    //   '</b>.%0AThis is AssistBot';
+    const chatResponse = `Welcome to <i>NextJS News Channel</i> <b>${requestJson.message.from.first_name}</b>.%0AThis is AssistBot`
 
-    // const ret = await fetch(
-    //   `https://api.telegram.org/bot${NEXT_TELEGRAM_TOKEN}/sendMessage?chat_id=${requestJson.message.chat.id}&text=${chatResponse}&parse_mode=HTML`
-    // );
+    // // const response =
+    // //   'Welcome to <i>NextJS News Channel</i> <b>' +
+    // //   message.from.first_name +
+    // //   '</b>.%0AThis is AssistBot';
+
+    const ret = await fetch(
+      `https://api.telegram.org/bot${NEXT_TELEGRAM_TOKEN}/sendMessage?chat_id=${requestJson.message.chat.id}&text=${chatResponse}&parse_mode=HTML`
+    );
 
     return new Response(JSON.stringify({ body: 'hello world' }), {
       headers: { 'Content-Type': 'application/json' }
