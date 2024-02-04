@@ -41,6 +41,7 @@ async function UserOrLogin() {
             <Link href="/sign-in?callbackUrl=/">Login</Link>
           </Button>
         )}
+        <Link href="/dashboard">Dashboard</Link>
       </div>
     </>
   )

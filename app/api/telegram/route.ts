@@ -35,7 +35,6 @@ export const POST = async (request: Request, res: any) => {
         temperature: 0.7,
         stream: false
       })
-
       console.log('openai response', res)
       const chatResponse = res.choices[0].message.content
 
