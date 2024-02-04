@@ -20,7 +20,8 @@ export const POST = async (request: Request, res: any) => {
       const messages = [
         {
           role: 'system',
-          content: 'Welcome to the NextJS News Channel'
+          content:
+            'You are a emotional support chatbot life coach named Life Coach AI. You help users with their emotional support'
         },
         {
           role: 'user',
@@ -42,10 +43,10 @@ export const POST = async (request: Request, res: any) => {
         `https://api.telegram.org/bot${NEXT_TELEGRAM_TOKEN}/sendMessage?chat_id=${requestJson.message.chat.id}&text=${chatResponse}&parse_mode=HTML`
       )
       console.log('telegram response', ret)
-    } else if (requestJson.message?.voice) {
+    }
+    // else if (requestJson.message?.voice) {
+    else {
       // Handle voice message
-      const voiceResponse = `Hi ${requestJson.message.from.first_name}, I received your voice message, but I'm not able to process voice messages yet.`
-
 
       const messages = [
         {
@@ -71,7 +72,6 @@ export const POST = async (request: Request, res: any) => {
 
       console.log('openai response', res)
       const chatResponse = res.choices[0].message.content
-
 
       const ret = await fetch(
         `https://api.telegram.org/bot${NEXT_TELEGRAM_TOKEN}/sendMessage?chat_id=${requestJson.message.chat.id}&text=${chatResponse}&parse_mode=HTML`
